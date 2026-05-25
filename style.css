@@ -1,0 +1,746 @@
+/*
+Theme Name:  Globe & Anchor Digital
+Description: Child theme for Astra — Globe & Anchor Digital Media Solutions LLC
+Author:      Arval Headrick
+Author URI:  https://www.globeanchordigital.com
+Template:    astra
+Version:     1.0.0
+Text Domain: globe-anchor
+*/
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --ga-bg-deep:      #050D1A;
+  --ga-bg-dark:      #0A1628;
+  --ga-bg-card:      #0D1F3C;
+  --ga-accent-blue:  #00A8FF;
+  --ga-accent-cyan:  #00E5FF;
+  --ga-text-primary: #E8F4FD;
+  --ga-text-muted:   #8BB8D4;
+  --ga-border:       rgba(0, 200, 255, 0.2);
+  --ga-glow:         rgba(0, 200, 255, 0.15);
+  --font-heading:    'Orbitron', 'Rajdhani', sans-serif;
+  --font-body:       'Inter', 'DM Sans', sans-serif;
+}
+
+/* ============================================================
+   GLOBAL DARK BASE
+   ============================================================ */
+html, body {
+  background-color: var(--ga-bg-deep) !important;
+  color: var(--ga-text-primary) !important;
+}
+
+body, p, li, span, label, td, th {
+  font-family: var(--font-body) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading) !important;
+  color: var(--ga-text-primary) !important;
+  letter-spacing: 0.04em;
+}
+
+a             { color: var(--ga-accent-blue); }
+a:hover       { color: var(--ga-accent-cyan); }
+
+/* ============================================================
+   ASTRA OVERRIDES
+   ============================================================ */
+
+/* Header */
+#masthead,
+.main-header-bar,
+.ast-masthead-custom-menu-items {
+  background-color: rgba(5, 13, 26, 0.95) !important;
+  border-bottom: 1px solid var(--ga-border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Nav */
+.main-navigation a,
+.ast-primary-nav .menu-item > a,
+#masthead .main-header-bar a {
+  color: var(--ga-text-primary) !important;
+  font-family: var(--font-body) !important;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.main-navigation a:hover,
+.ast-primary-nav .menu-item > a:hover { color: var(--ga-accent-cyan) !important; }
+
+/* Logo placeholder */
+.site-title a { color: var(--ga-text-primary) !important; }
+.gad-logo     { height: 40px; width: auto; }
+
+/* Content backgrounds */
+#content,
+.site-content,
+.ast-container,
+.entry-content,
+.ast-article-post-format-standard { background-color: transparent !important; }
+
+/* Footer */
+#colophon,
+.site-footer {
+  background-color: var(--ga-bg-dark) !important;
+  border-top: 1px solid var(--ga-border);
+  color: var(--ga-text-muted) !important;
+}
+.site-footer a            { color: var(--ga-text-muted); }
+.site-footer a:hover      { color: var(--ga-accent-cyan); }
+.footer-widget-area       { background-color: transparent !important; }
+
+/* Full-width custom-template pages: strip Astra's page title + padding */
+.ga-template .ast-breadcrumbs-wrapper,
+.ga-template .ast-page-title-area,
+.ga-template .entry-header { display: none !important; }
+
+.ga-template #content .ast-container,
+.ga-template .site-content .ast-container {
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+.ga-template .entry-content,
+.ga-template .ast-post-content-wrap {
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.ga-template .hentry { margin: 0 !important; }
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.ga-btn {
+  display: inline-block;
+  padding: 14px 32px;
+  font-family: var(--font-heading) !important;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  border-radius: 3px;
+  transition: all 0.22s ease;
+  cursor: pointer;
+  border: none;
+}
+.ga-btn-primary {
+  background: var(--ga-accent-blue);
+  color: #fff !important;
+  border: 1px solid var(--ga-accent-blue);
+  box-shadow: 0 0 18px rgba(0,168,255,0.28);
+}
+.ga-btn-primary:hover {
+  background: var(--ga-accent-cyan);
+  border-color: var(--ga-accent-cyan);
+  box-shadow: 0 0 30px rgba(0,229,255,0.45);
+  color: var(--ga-bg-deep) !important;
+  transform: translateY(-1px);
+}
+.ga-btn-secondary {
+  background: transparent;
+  color: var(--ga-accent-cyan) !important;
+  border: 1px solid var(--ga-accent-cyan);
+}
+.ga-btn-secondary:hover {
+  background: rgba(0,229,255,0.08);
+  box-shadow: 0 0 18px var(--ga-glow);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   LAYOUT UTILITIES
+   ============================================================ */
+.ga-section   { padding: 80px 20px; position: relative; }
+.ga-container { max-width: 1180px; margin: 0 auto; width: 100%; }
+
+.ga-section-label {
+  display: inline-block;
+  font-family: var(--font-heading) !important;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ga-accent-cyan);
+  margin-bottom: 10px;
+  border-left: 2px solid var(--ga-accent-cyan);
+  padding-left: 10px;
+}
+.ga-section-title    { font-size: clamp(1.75rem, 3.5vw, 2.6rem); margin-bottom: 14px; line-height: 1.15; }
+.ga-section-subtitle { font-size: 1.02rem; color: var(--ga-text-muted); max-width: 580px; line-height: 1.72; }
+
+/* ============================================================
+   BACKGROUNDS — GRID & CIRCUIT
+   ============================================================ */
+.ga-grid-bg {
+  background-image:
+    linear-gradient(rgba(0,168,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,168,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.ga-circuit-bg { position: relative; overflow: hidden; }
+
+/* Base grid overlay */
+.ga-circuit-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,168,255,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,168,255,0.045) 1px, transparent 1px);
+  background-size: 46px 46px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Circuit trace SVG overlay */
+.ga-circuit-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cpath d='M0 120 L60 120 L60 60 L180 60 L180 120 L240 120' stroke='rgba(0,168,255,0.07)' stroke-width='1' fill='none'/%3E%3Cpath d='M60 60 L60 0' stroke='rgba(0,168,255,0.05)' stroke-width='1' fill='none'/%3E%3Cpath d='M180 120 L180 240' stroke='rgba(0,168,255,0.05)' stroke-width='1' fill='none'/%3E%3Ccircle cx='60' cy='120' r='3' fill='rgba(0,200,255,0.18)'/%3E%3Ccircle cx='180' cy='60' r='3' fill='rgba(0,200,255,0.18)'/%3E%3Ccircle cx='60' cy='60' r='2' fill='rgba(0,200,255,0.1)'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Content inside circuit sections must sit above overlays */
+.ga-circuit-bg > * { position: relative; z-index: 1; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.ga-hero {
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--ga-bg-deep) 0%, #060f1e 55%, #0A1628 100%);
+  padding: 110px 20px 80px;
+}
+
+/* Radial glow from upper right */
+.ga-hero::after {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -5%;
+  width: 55%;
+  height: 160%;
+  background: radial-gradient(ellipse at center, rgba(0,168,255,0.07) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ga-hero-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.ga-hero-eyebrow {
+  display: inline-block;
+  font-family: var(--font-heading) !important;
+  font-size: 0.6rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ga-accent-cyan);
+  border: 1px solid rgba(0,229,255,0.28);
+  padding: 5px 14px;
+  border-radius: 2px;
+  background: rgba(0,229,255,0.04);
+  margin-bottom: 22px;
+}
+
+.ga-hero h1 {
+  font-size: clamp(2.2rem, 4.8vw, 3.8rem) !important;
+  line-height: 1.08 !important;
+  margin-bottom: 22px !important;
+  background: linear-gradient(135deg, #E8F4FD 0%, #00E5FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ga-hero-sub {
+  font-size: 1.08rem;
+  color: var(--ga-text-muted);
+  line-height: 1.76;
+  margin-bottom: 40px;
+  max-width: 510px;
+}
+
+.ga-hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.ga-hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ga-hero-visual .howard-avatar {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 32px rgba(0,168,255,0.32));
+}
+
+.howard-placeholder {
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 1 / 1;
+  background: var(--ga-bg-card);
+  border: 1px solid var(--ga-border);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--ga-text-muted);
+  font-size: 0.8rem;
+  box-shadow: 0 0 40px rgba(0,168,255,0.08);
+}
+
+/* ============================================================
+   PROBLEM SECTION
+   ============================================================ */
+.ga-problems { background-color: var(--ga-bg-dark); padding: 80px 20px; }
+
+.ga-problems-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-top: 48px;
+}
+
+.ga-problem-card {
+  background: var(--ga-bg-card);
+  border: 1px solid var(--ga-border);
+  border-radius: 8px;
+  padding: 30px;
+  transition: box-shadow 0.28s, border-color 0.28s, transform 0.2s;
+}
+.ga-problem-card:hover {
+  box-shadow: 0 0 22px var(--ga-glow);
+  border-color: rgba(0,229,255,0.34);
+  transform: translateY(-2px);
+}
+.ga-problem-card-icon { font-size: 1.4rem; margin-bottom: 10px; }
+.ga-problem-card h3   { font-size: 1rem !important; color: var(--ga-accent-cyan) !important; margin-bottom: 7px !important; }
+.ga-problem-card p    { font-size: 0.9rem; color: var(--ga-text-muted); line-height: 1.65; margin: 0; }
+
+/* ============================================================
+   SERVICES SECTION (homepage 3-col cards)
+   ============================================================ */
+.ga-services { padding: 80px 20px; background: var(--ga-bg-deep); }
+
+.ga-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 48px;
+}
+
+.ga-service-card {
+  background: var(--ga-bg-card);
+  border: 1px solid var(--ga-border);
+  border-radius: 10px;
+  padding: 36px 26px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: box-shadow 0.28s, border-color 0.28s, transform 0.2s;
+}
+.ga-service-card:hover {
+  box-shadow: 0 0 28px var(--ga-glow);
+  border-color: rgba(0,229,255,0.38);
+  transform: translateY(-3px);
+}
+.ga-service-card.featured {
+  border-color: rgba(0,229,255,0.45);
+  box-shadow: 0 0 28px rgba(0,229,255,0.10);
+}
+
+.ga-service-badge {
+  position: absolute;
+  top: -13px;
+  left: 26px;
+  font-family: var(--font-heading) !important;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--ga-accent-cyan);
+  color: var(--ga-bg-deep);
+  padding: 4px 12px;
+  border-radius: 2px;
+  font-weight: 700;
+}
+
+.ga-service-tier {
+  font-family: var(--font-heading) !important;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ga-accent-blue);
+  margin-bottom: 6px;
+}
+.ga-service-card h3    { font-size: 1.25rem !important; margin-bottom: 4px !important; }
+.ga-service-price      { font-size: 0.82rem; color: var(--ga-accent-cyan); margin-bottom: 20px; font-weight: 600; }
+
+.ga-service-card ul    { list-style: none; padding: 0; margin: 0 0 22px; flex: 1; }
+.ga-service-card ul li {
+  font-size: 0.875rem;
+  color: var(--ga-text-muted);
+  padding: 5px 0 5px 18px;
+  position: relative;
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(0,168,255,0.06);
+}
+.ga-service-card ul li::before { content: '▸'; position: absolute; left: 0; color: var(--ga-accent-blue); font-size: 0.72rem; top: 7px; }
+.ga-service-card .ga-btn { align-self: flex-start; font-size: 0.75rem; padding: 10px 22px; }
+
+/* ============================================================
+   CLIENT JOURNEY FUNNEL
+   ============================================================ */
+.ga-funnel {
+  padding: 64px 20px;
+  background: var(--ga-bg-dark);
+  border-top: 1px solid var(--ga-border);
+  border-bottom: 1px solid var(--ga-border);
+}
+
+.ga-funnel-flow {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.ga-funnel-step {
+  background: var(--ga-bg-card);
+  border: 1px solid var(--ga-border);
+  border-radius: 8px;
+  padding: 22px 24px;
+  text-align: center;
+  flex: 1;
+  min-width: 140px;
+  max-width: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.ga-funnel-num  { font-family: var(--font-heading) !important; font-size: 0.58rem; letter-spacing: 0.22em; color: var(--ga-accent-cyan); }
+.ga-funnel-step h4 { font-size: 0.82rem !important; margin: 0 !important; color: var(--ga-text-primary) !important; line-height: 1.35; }
+.ga-funnel-arrow { font-size: 1.1rem; color: var(--ga-accent-blue); padding: 0 10px; opacity: 0.55; display: flex; align-items: center; }
+
+/* ============================================================
+   CREDIBILITY STRIP
+   ============================================================ */
+.ga-credibility { padding: 64px 20px; background: var(--ga-bg-deep); }
+
+.ga-stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
+}
+
+.ga-stat       { text-align: center; border-left: 2px solid var(--ga-accent-cyan); padding: 12px 20px; }
+.ga-stat-value { font-family: var(--font-heading) !important; font-size: 2.2rem; color: var(--ga-accent-cyan); display: block; line-height: 1; margin-bottom: 6px; }
+.ga-stat-label { font-size: 0.78rem; color: var(--ga-text-muted); max-width: 160px; line-height: 1.42; }
+
+.ga-logos-row  { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; opacity: 0.55; }
+.ga-logo-text  {
+  font-family: var(--font-heading) !important;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ga-text-muted);
+  border: 1px solid rgba(139,184,212,0.18);
+  padding: 5px 14px;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   ABOUT SNIPPET (homepage)
+   ============================================================ */
+.ga-about-snippet { padding: 80px 20px; background: var(--ga-bg-dark); }
+.ga-about-inner { max-width: 800px; margin: 0 auto; }
+
+.ga-about-inner blockquote {
+  border-left: 3px solid var(--ga-accent-blue);
+  margin: 24px 0;
+  padding: 0 0 0 28px;
+}
+.ga-about-inner p { font-size: 1.02rem; line-height: 1.8; color: var(--ga-text-muted); }
+
+/* ============================================================
+   OPENCLAW CALLOUT
+   ============================================================ */
+.ga-openclaw { padding: 60px 20px; background: var(--ga-bg-deep); border-top: 1px solid var(--ga-border); }
+
+.ga-openclaw-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  background: var(--ga-bg-card);
+  border: 1px solid var(--ga-border);
+  border-radius: 12px;
+  padding: 38px;
+  box-shadow: 0 0 40px rgba(0,168,255,0.06);
+}
+
+.ga-openclaw-image            { flex-shrink: 0; }
+.ga-openclaw-image .howard-avatar,
+.ga-openclaw-image .howard-sm  { width: 130px; height: 130px; border-radius: 8px; object-fit: cover; display: block; }
+
+.ga-openclaw-content h3 { font-size: 1.15rem !important; margin-bottom: 8px !important; color: var(--ga-accent-cyan) !important; }
+.ga-openclaw-content p  { font-size: 0.9rem; color: var(--ga-text-muted); line-height: 1.65; margin-bottom: 18px; }
+
+/* ============================================================
+   CTA BANNER
+   ============================================================ */
+.ga-cta-banner {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #071020 0%, #0A1628 100%);
+  border-top: 1px solid var(--ga-border);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.ga-cta-banner-inner { position: relative; z-index: 1; max-width: 660px; margin: 0 auto; }
+.ga-cta-banner h2 { font-size: clamp(1.75rem, 3.5vw, 2.4rem) !important; margin-bottom: 16px !important; }
+.ga-cta-banner p  { font-size: 1.02rem; color: var(--ga-text-muted); line-height: 1.72; margin-bottom: 34px; }
+
+/* ============================================================
+   SERVICES PAGE — FULL DETAIL SECTIONS
+   ============================================================ */
+.ga-service-full { padding: 80px 20px; border-bottom: 1px solid var(--ga-border); }
+.ga-service-full-inner { max-width: 900px; margin: 0 auto; }
+.ga-service-full h2 { font-size: clamp(1.5rem, 3vw, 2.1rem) !important; margin-bottom: 0 !important; }
+
+.ga-service-meta { display: flex; gap: 28px; flex-wrap: wrap; margin: 12px 0 26px; }
+.ga-service-meta-item { font-size: 0.8rem; color: var(--ga-text-muted); letter-spacing: 0.04em; }
+.ga-service-meta-item strong { color: var(--ga-accent-blue); }
+
+.ga-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin: 28px 0; }
+
+.ga-check-list { list-style: none; padding: 0; margin: 0; }
+.ga-check-list li {
+  padding: 8px 0 8px 24px;
+  position: relative;
+  font-size: 0.9rem;
+  color: var(--ga-text-muted);
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(0,168,255,0.07);
+}
+.ga-check-list li::before { content: '✓'; position: absolute; left: 0; color: var(--ga-accent-cyan); font-weight: 700; }
+
+.ga-outcome-box { background: var(--ga-bg-card); border: 1px solid var(--ga-border); border-radius: 8px; padding: 24px; }
+.ga-outcome-box h4 {
+  font-size: 0.68rem !important;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ga-accent-cyan) !important;
+  margin-bottom: 14px !important;
+}
+
+/* ============================================================
+   ABOUT PAGE
+   ============================================================ */
+.ga-about-hero { padding: 110px 20px 70px; background: var(--ga-bg-deep); }
+.ga-about-hero-inner {
+  max-width: 1020px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.ga-headshot-wrap { position: sticky; top: 100px; }
+.ga-headshot {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: var(--ga-bg-card);
+  border: 1px solid var(--ga-border);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ga-text-muted);
+  font-size: 0.78rem;
+  box-shadow: 0 0 32px rgba(0,168,255,0.07);
+}
+.ga-headshot img { width: 100%; height: 100%; object-fit: cover; }
+
+.ga-about-bio h1           { font-size: clamp(2rem, 4vw, 2.9rem) !important; margin-bottom: 6px !important; }
+.ga-about-bio .ga-role-tag {
+  font-family: var(--font-heading) !important;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ga-accent-cyan);
+  display: block;
+  margin-bottom: 30px;
+}
+.ga-about-bio p { font-size: 0.98rem; color: var(--ga-text-muted); line-height: 1.8; margin-bottom: 18px; }
+
+.ga-project-highlight {
+  background: var(--ga-bg-card);
+  border-left: 3px solid var(--ga-accent-blue);
+  padding: 14px 18px;
+  margin: 8px 0;
+  border-radius: 0 6px 6px 0;
+}
+.ga-project-highlight strong { color: var(--ga-text-primary); font-size: 0.88rem; display: block; margin-bottom: 4px; }
+.ga-project-highlight p      { font-size: 0.82rem; margin: 0; line-height: 1.55; }
+
+.ga-creds-section { padding: 60px 20px; background: var(--ga-bg-dark); }
+.ga-creds-inner   { max-width: 900px; margin: 0 auto; }
+
+.ga-cred-badges { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 24px; }
+.ga-cred-badge {
+  background: var(--ga-bg-card);
+  border: 1px solid var(--ga-border);
+  border-radius: 6px;
+  padding: 14px 20px;
+  font-size: 0.875rem;
+  color: var(--ga-text-primary);
+}
+.ga-cred-badge span {
+  display: block;
+  font-size: 0.62rem;
+  color: var(--ga-accent-cyan);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  font-family: var(--font-heading) !important;
+}
+
+.ga-philosophy       { padding: 64px 20px; background: var(--ga-bg-deep); }
+.ga-philosophy-inner { max-width: 800px; margin: 0 auto; }
+.ga-philosophy p     { font-size: 1.02rem; color: var(--ga-text-muted); line-height: 1.8; margin-bottom: 20px; }
+
+/* ============================================================
+   CONTACT PAGE
+   ============================================================ */
+.ga-contact-hero { padding: 110px 20px 60px; background: var(--ga-bg-deep); text-align: center; }
+.ga-contact-hero h1 { font-size: clamp(1.9rem, 4vw, 2.8rem) !important; margin-bottom: 16px !important; }
+.ga-contact-hero p  { font-size: 1.02rem; color: var(--ga-text-muted); max-width: 560px; margin: 0 auto 10px; line-height: 1.72; }
+.ga-contact-note    { font-size: 0.78rem !important; color: var(--ga-accent-cyan) !important; letter-spacing: 0.06em; }
+
+.ga-contact-body { padding: 60px 20px 90px; background: var(--ga-bg-dark); }
+.ga-contact-grid {
+  max-width: 1020px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 44px;
+  align-items: start;
+}
+
+.ga-calendly-wrap {
+  background: var(--ga-bg-card);
+  border: 1px solid var(--ga-border);
+  border-radius: 10px;
+  padding: 32px;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ga-calendly-placeholder { text-align: center; color: var(--ga-text-muted); font-size: 0.85rem; line-height: 1.6; }
+.ga-calendly-placeholder svg { display: block; margin: 0 auto 12px; opacity: 0.28; }
+
+.ga-contact-form {
+  background: var(--ga-bg-card);
+  border: 1px solid var(--ga-border);
+  border-radius: 10px;
+  padding: 32px;
+}
+.ga-contact-form h3 { font-size: 0.95rem !important; margin-bottom: 22px !important; color: var(--ga-text-muted) !important; font-weight: 400 !important; font-family: var(--font-body) !important; letter-spacing: 0; }
+
+.ga-form-group { margin-bottom: 16px; }
+.ga-form-group label {
+  display: block;
+  font-family: var(--font-heading) !important;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ga-text-muted);
+  margin-bottom: 6px;
+}
+.ga-form-group input,
+.ga-form-group textarea {
+  width: 100%;
+  background: var(--ga-bg-deep) !important;
+  border: 1px solid var(--ga-border) !important;
+  border-radius: 4px;
+  padding: 11px 14px;
+  color: var(--ga-text-primary) !important;
+  font-size: 0.88rem;
+  font-family: var(--font-body) !important;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  outline: none;
+}
+.ga-form-group input:focus,
+.ga-form-group textarea:focus {
+  border-color: var(--ga-accent-blue) !important;
+  box-shadow: 0 0 12px rgba(0,168,255,0.14);
+}
+.ga-form-group textarea { min-height: 120px; resize: vertical; }
+.ga-form-submit { width: 100%; text-align: center; padding: 14px; margin-top: 8px; }
+
+/* ============================================================
+   FOOTER NAV
+   ============================================================ */
+.ga-footer-nav { display: flex; gap: 24px; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
+.ga-footer-nav li a { font-size: 0.85rem; color: var(--ga-text-muted); text-decoration: none; transition: color 0.2s; }
+.ga-footer-nav li a:hover { color: var(--ga-accent-cyan); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 960px) {
+  .ga-hero-inner       { grid-template-columns: 1fr; }
+  .ga-hero-visual      { display: none; }
+  .ga-services-grid    { grid-template-columns: 1fr; }
+  .ga-problems-grid    { grid-template-columns: 1fr; }
+  .ga-two-col          { grid-template-columns: 1fr; }
+  .ga-about-hero-inner { grid-template-columns: 1fr; }
+  .ga-headshot-wrap    { position: static; max-width: 260px; }
+  .ga-contact-grid     { grid-template-columns: 1fr; }
+  .ga-openclaw-inner   { flex-direction: column; }
+  .ga-funnel-flow      { flex-direction: column; align-items: center; gap: 12px; }
+  .ga-funnel-arrow     { transform: rotate(90deg); }
+  .ga-funnel-step      { max-width: 100%; width: 100%; }
+}
+
+@media (max-width: 600px) {
+  .ga-section   { padding: 56px 16px; }
+  .ga-hero      { padding: 88px 16px 56px; min-height: auto; }
+  .ga-stats-row { gap: 14px; }
+  .ga-hero-ctas { flex-direction: column; }
+  .ga-btn       { width: 100%; text-align: center; }
+  .ga-service-meta { flex-direction: column; gap: 10px; }
+}
